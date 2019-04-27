@@ -6,12 +6,16 @@
 //  Copyright © 2019 Rafael Kayumov. All rights reserved.
 //
 
-import Foundation
+import MapKit
+
+private let kZoomRegionSizeMeters: CLLocationDistance = 3000
 
 class MapInteractor {
 
     private unowned var dataProvider: MapObjectsDataProvider
     private unowned var view: MapViewController
+
+    private var mapCentered = false
 
     init(dataProvider: MapObjectsDataProvider, view: MapViewController) {
         self.dataProvider = dataProvider
@@ -22,8 +26,16 @@ class MapInteractor {
 extension MapInteractor: MapViewOutput {
 
     func onViewReady() {
-        dataProvider.loadData {
-            self.view.display($0)
+        dataProvider.loadData { features in
+            DispatchQueue.main.async {
+                self.view.display(features)
+            }
         }
+    }
+
+    func onUserLocationUpdate(_ coordinate: CLLocation) {
+        guard !mapCentered else { return }
+        view.centerOnUser()
+        view.applyZoom(kZoomRegionSizeMeters)
     }
 }

@@ -8,8 +8,11 @@
 
 import Foundation
 import GEOSwift
+import MapKit
 
 protocol MapViewInput: class {
 
     func display(_ objects: Features)
+    func centerOnUser()
+    func applyZoom(_ squareSizeMeters: CLLocationDistance)
 }
