@@ -6,7 +6,7 @@
 //  Copyright © 2019 Rafael Kayumov. All rights reserved.
 //
 
-import Foundation
+import GEOSwift
 
 class MapObjectsDataProvider {
 
@@ -18,13 +18,14 @@ class MapObjectsDataProvider {
         self.rechargingStationsService = rechargingStationsService
     }
 
-    func loadData() {
+    func loadData(_ completion: @escaping (Features) -> Void) {
         rechargingStationsService.loadObjects { _ in
-
         }
 
-        paidParkingService.loadObjects { _ in
-
+        paidParkingService.loadObjects { result in
+            if case .success(let results) = result {
+                completion(results)
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ private extension AppAssembly {
 
     func assembleMap(dataProvider: MapObjectsDataProvider) -> (module: MapInteractor, view: MapViewController) {
         let view = MapViewController.instantiate()
-        let module = MapInteractor(dataProvider: dataProvider)
+        let module = MapInteractor(dataProvider: dataProvider, view: view)
         view.output = module
 
         return (module, view)

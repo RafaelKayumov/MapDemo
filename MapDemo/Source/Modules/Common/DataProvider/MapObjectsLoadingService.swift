@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GEOSwift
 
 class MapObjectsLoadingService {
 
@@ -15,7 +16,7 @@ class MapObjectsLoadingService {
         case paidParking
     }
 
-    typealias MapObjectsLoadingCompletion = (Result<[AnyObject], Error>) -> Void
+    typealias MapObjectsLoadingCompletion = (Result<Features, Error>) -> Void
 
     private let transport: NetworkingTransport
     private var dataTask: URLSessionDataTask?
@@ -28,8 +29,9 @@ class MapObjectsLoadingService {
     private func responseDataHandler(with completion: @escaping MapObjectsLoadingCompletion) -> NetworkingTransport.DataTaskCompletion {
         return { result in
             switch result {
-            case .success(let response, let data):
-                completion(.success([]))
+            case .success(_, let data):
+                let features = try? Features.fromGeoJSON(data)
+                completion(.success(features ?? []))
             case .failure(let error):
                 completion(.failure(error))
             }

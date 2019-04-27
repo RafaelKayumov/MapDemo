@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import GEOSwift
 
 class MapViewController: UIViewController, StoryboardBased {
 
@@ -19,5 +20,11 @@ class MapViewController: UIViewController, StoryboardBased {
         super.viewDidLoad()
 
         output.onViewReady()
+    }
+}
+
+extension MapViewController: MapViewInput {
+    func display(_ objects: Features) {
+        mapView.addAnnotations(objects.compactMap { $0.geometries?.first?.mapShape() })
     }
 }

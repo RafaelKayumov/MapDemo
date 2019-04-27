@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import GEOSwift
+
+protocol MapViewInput: class {
+
+    func display(_ objects: Features)
+}
