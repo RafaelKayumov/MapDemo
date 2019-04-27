@@ -1,16 +1,24 @@
 PODS:
+  - geos (3.7.1)
+  - GEOSwift (4.0.0):
+    - geos (= 3.7.1)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
+  - GEOSwift
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - geos
+    - GEOSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
+  geos: 4f86329dc270f513bc220c77d9079aef38c5960d
+  GEOSwift: df67ababfd0792d82fb0aaaa9ae88875452c2192
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 5d4d348e2df52a68bf29cdc2d99a7d86e83cd279
+PODFILE CHECKSUM: 7fef35d2225c6090819c1772a6d9c9c732ec82f9
 
 COCOAPODS: 1.6.1
