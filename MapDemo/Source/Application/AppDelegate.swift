@@ -11,7 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private(set) var coordinator = AppCoordinator(appAssembly: AppAssembly())
+    private(set) var coordinator = AppCoordinator(assembly: AppAssembly())
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         coordinator.setupUI()

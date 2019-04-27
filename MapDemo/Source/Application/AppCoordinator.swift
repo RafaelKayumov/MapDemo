@@ -10,20 +10,20 @@ import UIKit
 
 class AppCoordinator {
 
-    private var appAssembly: AppAssembly
+    private var assembly: AppAssembly
     private(set) var navigationController: UINavigationController?
     private(set) var tabbarController: UITabBarController?
     private(set) var window: UIWindow?
 
-    init(appAssembly: AppAssembly) {
-        self.appAssembly = appAssembly
+    init(assembly: AppAssembly) {
+        self.assembly = assembly
     }
 
     func setupUI() {
         let window = UIWindow()
         window.backgroundColor = UIColor.white
 
-        let tabbarController = UITabBarController()
+        let tabbarController = prepareRootTabbarController()
         let navigationController = UINavigationController(rootViewController: tabbarController)
 
         window.rootViewController = navigationController
@@ -32,5 +32,12 @@ class AppCoordinator {
         self.navigationController = navigationController
         self.tabbarController = tabbarController
         self.window = window
+    }
+}
+
+private extension AppCoordinator {
+
+    func prepareRootTabbarController() -> UITabBarController {
+        return assembly.instantiateRootTabbarController()
     }
 }

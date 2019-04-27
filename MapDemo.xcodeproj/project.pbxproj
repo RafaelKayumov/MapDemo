@@ -13,6 +13,13 @@
 		7808F3E8227454C5005783D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F3E6227454C5005783D5 /* LaunchScreen.storyboard */; };
 		7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3F422745A5B005783D5 /* AppCoordinator.swift */; };
 		7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3F622745AB0005783D5 /* AppAssembly.swift */; };
+		7808F40022745E21005783D5 /* MapViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3FF22745E21005783D5 /* MapViewInput.swift */; };
+		7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F40122745E2B005783D5 /* MapViewOutput.swift */; };
+		7808F40522745E6A005783D5 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F40422745E6A005783D5 /* MapInteractor.swift */; };
+		7808F40722745E76005783D5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F40622745E76005783D5 /* MapViewController.swift */; };
+		7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F40A22745F00005783D5 /* ViewOutput.swift */; };
+		7808F40D22745FF3005783D5 /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F40C22745FF3005783D5 /* MapViewController.storyboard */; };
+		7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F41022746229005783D5 /* Storyboard+Init.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,13 @@
 		7808F3E9227454C5005783D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7808F3F422745A5B005783D5 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7808F3F622745AB0005783D5 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		7808F3FF22745E21005783D5 /* MapViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewInput.swift; sourceTree = "<group>"; };
+		7808F40122745E2B005783D5 /* MapViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewOutput.swift; sourceTree = "<group>"; };
+		7808F40422745E6A005783D5 /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		7808F40622745E76005783D5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7808F40A22745F00005783D5 /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
+		7808F40C22745FF3005783D5 /* MapViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapViewController.storyboard; sourceTree = "<group>"; };
+		7808F41022746229005783D5 /* Storyboard+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Init.swift"; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,7 +102,9 @@
 		7808F3EF22745565005783D5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7808F40E2274620A005783D5 /* Common */,
 				7808F3F2227455AF005783D5 /* Application */,
+				7808F3F922745D9D005783D5 /* Modules */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -118,6 +134,83 @@
 				7808F3E6227454C5005783D5 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7808F3F922745D9D005783D5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40822745EE1005783D5 /* Common */,
+				7808F3FA22745DA7005783D5 /* Map */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7808F3FA22745DA7005783D5 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				7808F3FC22745DCC005783D5 /* Protocol */,
+				7808F3FE22745E03005783D5 /* Interactor */,
+				7808F3FD22745DD4005783D5 /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		7808F3FC22745DCC005783D5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7808F3FF22745E21005783D5 /* MapViewInput.swift */,
+				7808F40122745E2B005783D5 /* MapViewOutput.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7808F3FD22745DD4005783D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40622745E76005783D5 /* MapViewController.swift */,
+				7808F40C22745FF3005783D5 /* MapViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7808F3FE22745E03005783D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40422745E6A005783D5 /* MapInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		7808F40822745EE1005783D5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40922745EE6005783D5 /* Protocol */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7808F40922745EE6005783D5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40A22745F00005783D5 /* ViewOutput.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7808F40E2274620A005783D5 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7808F40F2274620F005783D5 /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7808F40F2274620F005783D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7808F41022746229005783D5 /* Storyboard+Init.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +275,7 @@
 			files = (
 				7808F3E8227454C5005783D5 /* LaunchScreen.storyboard in Resources */,
 				7808F3E5227454C5005783D5 /* Assets.xcassets in Resources */,
+				7808F40D22745FF3005783D5 /* MapViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +330,13 @@
 			files = (
 				7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */,
 				7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */,
+				7808F40022745E21005783D5 /* MapViewInput.swift in Sources */,
+				7808F40522745E6A005783D5 /* MapInteractor.swift in Sources */,
+				7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */,
+				7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */,
 				7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */,
+				7808F40722745E76005783D5 /* MapViewController.swift in Sources */,
+				7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
