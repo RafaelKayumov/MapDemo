@@ -11,6 +11,8 @@
 		7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3DD227454C4005783D5 /* AppDelegate.swift */; };
 		7808F3E5227454C5005783D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7808F3E4227454C5005783D5 /* Assets.xcassets */; };
 		7808F3E8227454C5005783D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F3E6227454C5005783D5 /* LaunchScreen.storyboard */; };
+		7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3F422745A5B005783D5 /* AppCoordinator.swift */; };
+		7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F3F622745AB0005783D5 /* AppAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		7808F3E4227454C5005783D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7808F3E7227454C5005783D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7808F3E9227454C5005783D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7808F3F422745A5B005783D5 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		7808F3F622745AB0005783D5 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				7808F3DD227454C4005783D5 /* AppDelegate.swift */,
+				7808F3F422745A5B005783D5 /* AppCoordinator.swift */,
+				7808F3F622745AB0005783D5 /* AppAssembly.swift */,
 				7808F3E6227454C5005783D5 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
@@ -228,6 +234,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */,
+				7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */,
 				7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
