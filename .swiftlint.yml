@@ -1,0 +1,22 @@
+line_length: 200
+large_tuple: 4
+function_body_length: 50
+
+excluded:
+  - Carthage
+  - Pods
+
+identifier_name:
+  excluded:
+    - id
+    - pc
+    - x
+    - y
+    - z
+    - r
+    - g
+    - b
+
+disabled_rules:
+  - file_length
+  - cyclomatic_complexity
