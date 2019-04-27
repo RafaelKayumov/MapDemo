@@ -20,6 +20,10 @@
 		7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F40A22745F00005783D5 /* ViewOutput.swift */; };
 		7808F40D22745FF3005783D5 /* MapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F40C22745FF3005783D5 /* MapViewController.storyboard */; };
 		7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F41022746229005783D5 /* Storyboard+Init.swift */; };
+		7808F414227487C5005783D5 /* NetworkingTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F413227487C5005783D5 /* NetworkingTransport.swift */; };
+		7808F417227488A8005783D5 /* MapObjectsLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F416227488A8005783D5 /* MapObjectsLoadingService.swift */; };
+		7808F41922748DF5005783D5 /* URLSession+Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F41822748DF5005783D5 /* URLSession+Result.swift */; };
+		7808F41B227494AF005783D5 /* MapObjectsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F41A227494AF005783D5 /* MapObjectsDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		7808F40A22745F00005783D5 /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
 		7808F40C22745FF3005783D5 /* MapViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapViewController.storyboard; sourceTree = "<group>"; };
 		7808F41022746229005783D5 /* Storyboard+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Init.swift"; sourceTree = "<group>"; };
+		7808F413227487C5005783D5 /* NetworkingTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTransport.swift; sourceTree = "<group>"; };
+		7808F416227488A8005783D5 /* MapObjectsLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectsLoadingService.swift; sourceTree = "<group>"; };
+		7808F41822748DF5005783D5 /* URLSession+Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Result.swift"; sourceTree = "<group>"; };
+		7808F41A227494AF005783D5 /* MapObjectsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapObjectsDataProvider.swift; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,6 +192,7 @@
 		7808F40822745EE1005783D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7808F4152274888F005783D5 /* DataProvider */,
 				7808F40922745EE6005783D5 /* Protocol */,
 			);
 			path = Common;
@@ -200,6 +209,7 @@
 		7808F40E2274620A005783D5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7808F4122274874F005783D5 /* Networking */,
 				7808F40F2274620F005783D5 /* Utils */,
 			);
 			path = Common;
@@ -209,8 +219,26 @@
 			isa = PBXGroup;
 			children = (
 				7808F41022746229005783D5 /* Storyboard+Init.swift */,
+				7808F41822748DF5005783D5 /* URLSession+Result.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7808F4122274874F005783D5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7808F413227487C5005783D5 /* NetworkingTransport.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7808F4152274888F005783D5 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				7808F416227488A8005783D5 /* MapObjectsLoadingService.swift */,
+				7808F41A227494AF005783D5 /* MapObjectsDataProvider.swift */,
+			);
+			path = DataProvider;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,8 +363,12 @@
 				7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */,
 				7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */,
 				7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */,
+				7808F41B227494AF005783D5 /* MapObjectsDataProvider.swift in Sources */,
+				7808F41922748DF5005783D5 /* URLSession+Result.swift in Sources */,
 				7808F40722745E76005783D5 /* MapViewController.swift in Sources */,
 				7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */,
+				7808F414227487C5005783D5 /* NetworkingTransport.swift in Sources */,
+				7808F417227488A8005783D5 /* MapObjectsLoadingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

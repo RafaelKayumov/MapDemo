@@ -9,10 +9,17 @@
 import Foundation
 
 class MapInteractor {
+
+    private unowned var dataProvider: MapObjectsDataProvider
+
+    init(dataProvider: MapObjectsDataProvider) {
+        self.dataProvider = dataProvider
+    }
 }
 
 extension MapInteractor: MapViewOutput {
 
     func onViewReady() {
+        dataProvider.loadData()
     }
 }
