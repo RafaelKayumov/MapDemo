@@ -35,6 +35,7 @@ extension MapInteractor: MapViewOutput {
 
     func onUserLocationUpdate(_ coordinate: CLLocation) {
         guard !mapCentered else { return }
+        mapCentered = true
         view.centerOnUser()
         view.applyZoom(kZoomRegionSizeMeters)
     }

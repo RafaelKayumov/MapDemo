@@ -30,8 +30,8 @@ class MapObjectsLoadingService {
         return { result in
             switch result {
             case .success(_, let data):
-                let features = try? Features.fromGeoJSON(data)
-                completion(.success(features ?? []))
+                let features = (try? Features.fromGeoJSON(data)) ?? []
+                completion(.success(features))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -58,7 +58,8 @@ class MapObjectsLoadingService {
 private let kBaseURLString = "apidata.mos.ru"
 private let kDatasetGeoJSONPath = "/v1/datasets/%d/features"
 private let kElectricChargerSetId = 2985
-private let kPaidParkingSetId = 1682
+private let kPaidParkingAreasId = 1682
+private let kPaidParkingsId = 623
 private let kBBox = "bbox"
 
 extension MapObjectsLoadingService {
@@ -72,7 +73,7 @@ extension MapObjectsLoadingService {
             case .rechargeStationsList:
                 return String(format: kDatasetGeoJSONPath, kElectricChargerSetId)
             case .paidParkingList:
-                return String(format: kDatasetGeoJSONPath, kPaidParkingSetId)
+                return String(format: kDatasetGeoJSONPath, kPaidParkingsId)
             }
         }
 
@@ -87,8 +88,6 @@ extension MapObjectsLoadingService {
             switch self {
             case .rechargeStationsList, .paidParkingList:
                 return [:]
-//                let queryParams = [kBBox: ""]
-//                return queryParams
             }
         }
     }

@@ -19,8 +19,8 @@ class MapObjectsDataProvider {
     }
 
     func loadData(_ completion: @escaping (Features) -> Void) {
-        rechargingStationsService.loadObjects { _ in
-        }
+//        rechargingStationsService.loadObjects { _ in
+//        }
 
         paidParkingService.loadObjects { result in
             if case .success(let results) = result {

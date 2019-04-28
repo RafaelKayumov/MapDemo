@@ -37,7 +37,25 @@ extension MapViewController: MapViewInput {
     }
 
     func display(_ objects: Features) {
-        mapView.addAnnotations(objects.compactMap { $0.geometries?.first?.mapShape() })
+        let overlays = objects.compactMap {
+            $0.geometries?.first?.mapShape() as? MKShapesCollection
+        }
+
+        overlays.forEach {
+            $0.shapes.forEach { shape in
+                if let polygon = shape as? MKPolygon {
+                    mapView.addOverlay(polygon)
+                } else if let polyline = shape as? MKPolyline {
+                    mapView.addOverlay(polyline)
+                }
+            }
+        }
+
+//        mapView.addOverlays(overlays)
+//        mapView.addAnnotations(objects.compactMap {
+//            MKShapesCollection
+//            return $0.geometries?.first?.mapShape()
+//        })
     }
 }
 
@@ -46,5 +64,18 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         guard let location = userLocation.location else { return }
         output.onUserLocationUpdate(location)
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(overlay: polyline)
+            renderer.strokeColor = UIColor.blue
+            renderer.lineWidth = 2.0
+            return renderer
+        } else if let plygon = overlay as? MKPolygon {
+            return MKPolygonRenderer(overlay: plygon)
+        } else {
+            return MKPolygonRenderer(overlay: overlay)
+        }
     }
 }
