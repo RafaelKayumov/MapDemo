@@ -67,5 +67,6 @@ extension MapInteractor: MapViewOutput {
     func onMapScroll(_ topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D) {
         mapBoundingRect.topLeft = topLeft
         mapBoundingRect.bottomRight = bottomRight
+        dataProvider.mapBoundingRect = mapBoundingRect
     }
 }

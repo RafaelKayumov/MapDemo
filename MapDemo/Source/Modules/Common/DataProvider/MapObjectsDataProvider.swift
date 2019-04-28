@@ -13,9 +13,30 @@ private let kRechargeStationsFileName = "rechargeStationsData.json"
 
 class MapObjectsDataProvider {
 
+    enum ObjectType {
+        case rechargingStation
+        case parking
+
+        var dataFileName: String {
+            switch self {
+            case .rechargingStation:
+                return kRechargeStationsFileName
+            case .parking:
+                return kParkingsDataFileName
+            }
+        }
+    }
+
     private var paidParkingAreasService: MapObjectsLoadingService
     private var paidParkingsService: MapObjectsLoadingService
     private var rechargingStationsService: MapObjectsLoadingService
+    var mapBoundingRect = BoundingRect.zero
+
+    private(set) var parkings = Features()
+    private(set) var rechargingStations = Features()
+    var allObjects: Features {
+        return parkings + rechargingStations
+    }
 
     init(paidParkingAreasService: MapObjectsLoadingService,
          paidParkingsService: MapObjectsLoadingService,
@@ -26,45 +47,65 @@ class MapObjectsDataProvider {
     }
 
     func loadData(_ boundingRect: BoundingRect? = nil, completion: @escaping (Features) -> Void) {
-        let handler: (Result<Data, Error>, String) -> Void = { result, fileName in
+        let handler: (Result<Data, Error>, ObjectType) -> Void = { result, objectType in
             var dataToParse: Data?
 
             if case .success(let data) = result {
                 dataToParse = data
-                data.writeTo(fileName)
+                data.writeTo(objectType.dataFileName)
             } else {
-                dataToParse = try? Data(contentsOf: URL.tempURLFor(fileName))
+                dataToParse = try? Data(contentsOf: URL.tempURLFor(objectType.dataFileName))
             }
 
             if let dataToParse = dataToParse {
                 let features = (try? Features.fromGeoJSON(dataToParse)) ?? []
-                completion(features)
+
+                switch objectType {
+                case .rechargingStation:
+                    self.rechargingStations = features
+                case .parking:
+                    self.parkings = features
+                }
+
+                completion(self.allObjects)
             } else {
                 completion([])
             }
         }
 
         rechargingStationsService.loadObjects(boundingRect) { result in
-            handler(result, kRechargeStationsFileName)
+            handler(result, .rechargingStation)
         }
 
         paidParkingsService.loadObjects(boundingRect) { result in
-            handler(result, kParkingsDataFileName)
+            handler(result, .parking)
         }
     }
 
     func fetchLocalData(_ boundingRect: BoundingRect? = nil, completion: @escaping (Features) -> Void) {
-        var features = Features()
-        if let parkingsData = try? Data(contentsOf: URL.tempURLFor(kParkingsDataFileName)) {
-            let parkings = (try? Features.fromGeoJSON(parkingsData)) ?? []
-            features += parkings
-        }
+        DispatchQueue.global(qos: .background).async {
+            if let parkingsData = try? Data(contentsOf: URL.tempURLFor(kParkingsDataFileName)) {
+                let parkings = (try? Features.fromGeoJSON(parkingsData)) ?? []
+                self.parkings = parkings
+            }
 
-        if let rechargingStationData = try? Data(contentsOf: URL.tempURLFor(kRechargeStationsFileName)) {
-            let rechargingstations = (try? Features.fromGeoJSON(rechargingStationData)) ?? []
-            features += rechargingstations
-        }
+            if let rechargingStationData = try? Data(contentsOf: URL.tempURLFor(kRechargeStationsFileName)) {
+                let rechargingstations = (try? Features.fromGeoJSON(rechargingStationData)) ?? []
+                self.rechargingStations = rechargingstations
+            }
 
-        completion(features)
+            DispatchQueue.main.async {
+                completion(self.allObjects)
+            }
+        }
+    }
+
+    func objectsInBoundingRect() -> Features {
+        guard let rectPolygon = Envelope(p1: Coordinate(mapBoundingRect.topLeft), p2: Coordinate(mapBoundingRect.bottomRight)) else {
+            return []
+        }
+        return allObjects.filter {
+            $0.geometries?.first?.intersects(rectPolygon) ?? false
+        }
     }
 }
