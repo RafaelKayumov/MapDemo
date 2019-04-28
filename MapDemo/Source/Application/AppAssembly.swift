@@ -12,9 +12,12 @@ class AppAssembly {
 
     private weak var mapModule: MapInteractor?
     lazy private var dataProvider: MapObjectsDataProvider = {
-        let paidParkingService = MapObjectsLoadingService(type: .paidParking)
+        let paidParkingAreasService = MapObjectsLoadingService(type: .paidParkingArea)
+        let paidParkingsService = MapObjectsLoadingService(type: .paidParking)
         let rechargeStationService = MapObjectsLoadingService(type: .rechargeStation)
-        return MapObjectsDataProvider(paidParkingService: paidParkingService, rechargingStationsService: rechargeStationService)
+        return MapObjectsDataProvider(paidParkingAreasService: paidParkingAreasService,
+                                      paidParkingsService: paidParkingsService,
+                                      rechargingStationsService: rechargeStationService)
     }()
 
     func instantiateMapModuleAndReturnView() -> UIViewController {

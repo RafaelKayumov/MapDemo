@@ -10,22 +10,26 @@ import GEOSwift
 
 class MapObjectsDataProvider {
 
-    private var paidParkingService: MapObjectsLoadingService
+    private var paidParkingAreasService: MapObjectsLoadingService
+    private var paidParkingsService: MapObjectsLoadingService
     private var rechargingStationsService: MapObjectsLoadingService
 
-    init(paidParkingService: MapObjectsLoadingService, rechargingStationsService: MapObjectsLoadingService) {
-        self.paidParkingService = paidParkingService
+    init(paidParkingAreasService: MapObjectsLoadingService,
+         paidParkingsService: MapObjectsLoadingService,
+         rechargingStationsService: MapObjectsLoadingService) {
+        self.paidParkingAreasService = paidParkingAreasService
+        self.paidParkingsService = paidParkingsService
         self.rechargingStationsService = rechargingStationsService
     }
 
     func loadData(_ completion: @escaping (Features) -> Void) {
-//        rechargingStationsService.loadObjects { _ in
-//        }
-
-        paidParkingService.loadObjects { result in
+        let completion: MapObjectsLoadingService.LoadingCompletion = { result in
             if case .success(let results) = result {
                 completion(results)
             }
         }
+
+        rechargingStationsService.loadObjects(with: completion)
+        paidParkingsService.loadObjects(with: completion)
     }
 }

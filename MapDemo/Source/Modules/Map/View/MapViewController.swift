@@ -42,6 +42,11 @@ private extension MapViewController {
         manager.reload(mapView: mapView)
     }
 
+    func add(_ annotations: [MKAnnotation]) {
+        manager.add(annotations)
+        manager.reload(mapView: mapView)
+    }
+
     func remove(_ annotation: MKAnnotation) {
         manager.remove(annotation)
         manager.reload(mapView: mapView)
@@ -60,25 +65,35 @@ extension MapViewController: MapViewInput {
     }
 
     func display(_ objects: Features) {
-        let overlays = objects.compactMap {
-            $0.geometries?.first?.mapShape() as? MKShapesCollection
-        }
-
-        overlays.forEach {
-            $0.shapes.forEach { shape in
-                if let polygon = shape as? MKPolygon {
-                    add(polygon)
-                } else if let polyline = shape as? MKPolyline {
-                    add(polyline)
-                }
+        func apply(_ shape: MKShape) {
+            if let polygon = shape as? MKPolygon {
+                add(polygon)
+            } else if let polyline = shape as? MKPolyline {
+                add(polyline)
             }
         }
 
-//        mapView.addOverlays(overlays)
-//        mapView.addAnnotations(objects.compactMap {
-//            MKShapesCollection
-//            return $0.geometries?.first?.mapShape()
-//        })
+        let shapesCollection = objects.compactMap {
+            $0.geometries?.first?.mapShape() as? MKShapesCollection
+        }
+        shapesCollection.forEach {
+            $0.shapes.forEach { shape in
+                apply(shape)
+            }
+        }
+
+        let overlays = objects.compactMap {
+            $0.geometries?.first?.mapShape()
+        }
+        overlays.forEach {
+            apply($0)
+        }
+
+        let annotations = objects.compactMap {
+            $0.geometries?.first?.mapShape() as? MKPointAnnotation
+        }
+
+        add(annotations)
     }
 }
 
@@ -111,8 +126,8 @@ extension MapViewController: MKMapViewDelegate {
         if let polyline = overlay as? MKPolyline {
             let renderer = MKPolylineRenderer.trackRendererFor(polyline)
             return renderer
-        } else if let plygon = overlay as? MKPolygon {
-            return MKPolygonRenderer(overlay: plygon)
+        } else if let polygon = overlay as? MKPolygon {
+            return MKPolygonRenderer.trackRendererFor(polygon)
         }
 
         return MKOverlayRenderer()

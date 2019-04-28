@@ -14,9 +14,10 @@ class MapObjectsLoadingService {
     enum `Type` {
         case rechargeStation
         case paidParking
+        case paidParkingArea
     }
 
-    typealias MapObjectsLoadingCompletion = (Result<Features, Error>) -> Void
+   typealias LoadingCompletion = (Result<Features, Error>) -> Void
 
     private let transport: NetworkingTransport
     private var dataTask: URLSessionDataTask?
@@ -26,7 +27,7 @@ class MapObjectsLoadingService {
         self.type = type
     }
 
-    private func responseDataHandler(with completion: @escaping MapObjectsLoadingCompletion) -> NetworkingTransport.DataTaskCompletion {
+    private func responseDataHandler(with completion: @escaping LoadingCompletion) -> NetworkingTransport.DataTaskCompletion {
         return { result in
             switch result {
             case .success(_, let data):
@@ -38,13 +39,15 @@ class MapObjectsLoadingService {
         }
     }
 
-    func loadObjects(with completion: @escaping MapObjectsLoadingCompletion) {
+    func loadObjects(with completion: @escaping LoadingCompletion) {
         var route: Route
         switch type {
         case .rechargeStation:
-            route = .rechargeStationsList
+            route = .rechargeStations
         case .paidParking:
-            route = .paidParkingList
+            route = .paidParkings
+        case .paidParkingArea:
+            route = .paidParkingAreas
         }
         dataTask = transport.query(route, with: responseDataHandler(with: completion))
     }
@@ -65,28 +68,31 @@ private let kBBox = "bbox"
 extension MapObjectsLoadingService {
 
     enum Route: RouteProviding {
-        case rechargeStationsList
-        case paidParkingList
+        case rechargeStations
+        case paidParkings
+        case paidParkingAreas
 
         var path: String {
             switch self {
-            case .rechargeStationsList:
+            case .rechargeStations:
                 return String(format: kDatasetGeoJSONPath, kElectricChargerSetId)
-            case .paidParkingList:
+            case .paidParkingAreas:
+                return String(format: kDatasetGeoJSONPath, kPaidParkingAreasId)
+            case .paidParkings:
                 return String(format: kDatasetGeoJSONPath, kPaidParkingsId)
             }
         }
 
         var host: String {
             switch self {
-            case .rechargeStationsList, .paidParkingList:
+            case .rechargeStations, .paidParkings, .paidParkingAreas:
                 return kBaseURLString
             }
         }
 
         var queryParams: [String: String] {
             switch self {
-            case .rechargeStationsList, .paidParkingList:
+            case .rechargeStations, .paidParkings, .paidParkingAreas:
                 return [:]
             }
         }

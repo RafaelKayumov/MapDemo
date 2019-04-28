@@ -31,4 +31,5 @@ extension UIColor {
 
     static let clusterColor = UIColor(hex: "2D93AD")
     static let trackColor = UIColor(hex: "00B906")
+    static let trackFillColor = UIColor(hex: "00B906", alpha: 0.25)
 }
