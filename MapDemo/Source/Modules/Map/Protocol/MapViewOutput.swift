@@ -10,4 +10,5 @@ import MapKit
 
 protocol MapViewOutput: ViewOutput {
     func onUserLocationUpdate(_ coordinate: CLLocation)
+    func onMapScroll(_ topLeft: CLLocationCoordinate2D, bottomRight: CLLocationCoordinate2D)
 }

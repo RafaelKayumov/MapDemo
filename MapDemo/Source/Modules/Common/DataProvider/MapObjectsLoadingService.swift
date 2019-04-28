@@ -17,7 +17,7 @@ class MapObjectsLoadingService {
         case paidParkingArea
     }
 
-   typealias LoadingCompletion = (Result<Features, Error>) -> Void
+   typealias LoadingCompletion = (Result<Data, Error>) -> Void
 
     private let transport: NetworkingTransport
     private var dataTask: URLSessionDataTask?
@@ -31,23 +31,22 @@ class MapObjectsLoadingService {
         return { result in
             switch result {
             case .success(_, let data):
-                let features = (try? Features.fromGeoJSON(data)) ?? []
-                completion(.success(features))
+                completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
 
-    func loadObjects(with completion: @escaping LoadingCompletion) {
+    func loadObjects(_ boundingRect: BoundingRect?, with completion: @escaping LoadingCompletion) {
         var route: Route
         switch type {
         case .rechargeStation:
-            route = .rechargeStations
+            route = .rechargeStations(boundingRect)
         case .paidParking:
-            route = .paidParkings
+            route = .paidParkings(boundingRect)
         case .paidParkingArea:
-            route = .paidParkingAreas
+            route = .paidParkingAreas(boundingRect)
         }
         dataTask = transport.query(route, with: responseDataHandler(with: completion))
     }
@@ -68,9 +67,9 @@ private let kBBox = "bbox"
 extension MapObjectsLoadingService {
 
     enum Route: RouteProviding {
-        case rechargeStations
-        case paidParkings
-        case paidParkingAreas
+        case rechargeStations(BoundingRect?)
+        case paidParkings(BoundingRect?)
+        case paidParkingAreas(BoundingRect?)
 
         var path: String {
             switch self {
@@ -92,8 +91,8 @@ extension MapObjectsLoadingService {
 
         var queryParams: [String: String] {
             switch self {
-            case .rechargeStations, .paidParkings, .paidParkingAreas:
-                return [:]
+            case .rechargeStations(let rect), .paidParkings(let rect), .paidParkingAreas(let rect):
+                return [kBBox: rect?.string ?? ""]
             }
         }
     }

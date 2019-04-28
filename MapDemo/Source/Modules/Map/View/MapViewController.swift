@@ -120,6 +120,7 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         manager.reload(mapView: mapView)
+        output.onMapScroll(mapView.topLeftCoordinate(), bottomRight: mapView.bottomRightCoordinate())
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

@@ -30,6 +30,9 @@
 		7808F4232275DF03005783D5 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4222275DF03005783D5 /* UIColor+Additions.swift */; };
 		7808F4252275E221005783D5 /* PolylineRenderer+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4242275E221005783D5 /* PolylineRenderer+Additions.swift */; };
 		7808F4272275F312005783D5 /* MKPolygonRenderer+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4262275F312005783D5 /* MKPolygonRenderer+Additions.swift */; };
+		7808F4292275F8A2005783D5 /* MKMapView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4282275F8A2005783D5 /* MKMapView+Additions.swift */; };
+		7808F42B2276229A005783D5 /* NSData+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F42A2276229A005783D5 /* NSData+Cache.swift */; };
+		7808F42D227626F3005783D5 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F42C227626F3005783D5 /* URL+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		7808F4222275DF03005783D5 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		7808F4242275E221005783D5 /* PolylineRenderer+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PolylineRenderer+Additions.swift"; sourceTree = "<group>"; };
 		7808F4262275F312005783D5 /* MKPolygonRenderer+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPolygonRenderer+Additions.swift"; sourceTree = "<group>"; };
+		7808F4282275F8A2005783D5 /* MKMapView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Additions.swift"; sourceTree = "<group>"; };
+		7808F42A2276229A005783D5 /* NSData+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Cache.swift"; sourceTree = "<group>"; };
+		7808F42C227626F3005783D5 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -238,6 +244,9 @@
 				7808F41022746229005783D5 /* Storyboard+Init.swift */,
 				7808F41822748DF5005783D5 /* URLSession+Result.swift */,
 				7808F4222275DF03005783D5 /* UIColor+Additions.swift */,
+				7808F4282275F8A2005783D5 /* MKMapView+Additions.swift */,
+				7808F42A2276229A005783D5 /* NSData+Cache.swift */,
+				7808F42C227626F3005783D5 /* URL+Additions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,12 +417,15 @@
 				7808F40522745E6A005783D5 /* MapInteractor.swift in Sources */,
 				7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */,
 				7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */,
+				7808F4292275F8A2005783D5 /* MKMapView+Additions.swift in Sources */,
 				7808F4272275F312005783D5 /* MKPolygonRenderer+Additions.swift in Sources */,
 				7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */,
 				7808F41B227494AF005783D5 /* MapObjectsDataProvider.swift in Sources */,
+				7808F42B2276229A005783D5 /* NSData+Cache.swift in Sources */,
 				7808F41922748DF5005783D5 /* URLSession+Result.swift in Sources */,
 				7808F4212275DDDF005783D5 /* ProperClusterManager.swift in Sources */,
 				7808F40722745E76005783D5 /* MapViewController.swift in Sources */,
+				7808F42D227626F3005783D5 /* URL+Additions.swift in Sources */,
 				7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */,
 				7808F414227487C5005783D5 /* NetworkingTransport.swift in Sources */,
 				7808F4252275E221005783D5 /* PolylineRenderer+Additions.swift in Sources */,
