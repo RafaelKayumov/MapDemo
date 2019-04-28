@@ -8,6 +8,7 @@ inhibit_all_warnings!
 def install_pods
     pod 'SwiftLint'
     pod 'GEOSwift'
+    pod 'Cluster'
 end
 
 target 'MapDemo' do

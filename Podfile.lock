@@ -1,24 +1,28 @@
 PODS:
+  - Cluster (3.0.0)
   - geos (3.7.1)
   - GEOSwift (4.0.0):
     - geos (= 3.7.1)
   - SwiftLint (0.31.0)
 
 DEPENDENCIES:
+  - Cluster
   - GEOSwift
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Cluster
     - geos
     - GEOSwift
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Cluster: 47f0e962d94ea961cc336d2bf936fe4dc1f61cdb
   geos: 4f86329dc270f513bc220c77d9079aef38c5960d
   GEOSwift: df67ababfd0792d82fb0aaaa9ae88875452c2192
   SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
 
-PODFILE CHECKSUM: 7fef35d2225c6090819c1772a6d9c9c732ec82f9
+PODFILE CHECKSUM: 18e4d8a654d22171650afc7be80ea12e04639bc0
 
 COCOAPODS: 1.6.1

@@ -1,10 +1,10 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift" "${PODS_CONFIGURATION_BUILD_DIR}/geos"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Cluster" "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift" "${PODS_CONFIGURATION_BUILD_DIR}/geos"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 GEOS_USE_ONLY_R_API
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift/GEOSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/geos/geos.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Cluster/Cluster.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift/GEOSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/geos/geos.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift/GEOSwift.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/geos/geos.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/geos"
-OTHER_LDFLAGS = $(inherited) -framework "GEOSwift" -framework "geos"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Cluster/Cluster.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift/GEOSwift.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/geos/geos.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Cluster" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/GEOSwift" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/geos"
+OTHER_LDFLAGS = $(inherited) -framework "Cluster" -framework "GEOSwift" -framework "geos"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
