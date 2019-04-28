@@ -28,6 +28,7 @@ struct BoundingRect {
 
 class MapInteractor {
 
+    private var locationManager = CLLocationManager()
     private unowned var dataProvider: MapObjectsDataProvider
     private unowned var view: MapViewController
 
@@ -44,6 +45,7 @@ class MapInteractor {
 extension MapInteractor: MapViewOutput {
 
     func onViewReady() {
+        locationManager.requestWhenInUseAuthorization()
         dataProvider.fetchLocalData { features in
             DispatchQueue.main.async {
                 self.view.display(features)

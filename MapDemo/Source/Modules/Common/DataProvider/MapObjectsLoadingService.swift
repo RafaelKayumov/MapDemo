@@ -59,9 +59,9 @@ class MapObjectsLoadingService {
 
 private let kBaseURLString = "apidata.mos.ru"
 private let kDatasetGeoJSONPath = "/v1/datasets/%d/features"
-private let kElectricChargerSetId = 2985
+let kElectricChargerSetId = 2985
 private let kPaidParkingAreasId = 1682
-private let kPaidParkingsId = 623
+let kPaidParkingsId = 623
 private let kBBox = "bbox"
 
 extension MapObjectsLoadingService {

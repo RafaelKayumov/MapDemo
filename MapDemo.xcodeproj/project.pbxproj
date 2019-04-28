@@ -33,6 +33,13 @@
 		7808F4292275F8A2005783D5 /* MKMapView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4282275F8A2005783D5 /* MKMapView+Additions.swift */; };
 		7808F42B2276229A005783D5 /* NSData+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F42A2276229A005783D5 /* NSData+Cache.swift */; };
 		7808F42D227626F3005783D5 /* URL+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F42C227626F3005783D5 /* URL+Additions.swift */; };
+		7808F43322763BA3005783D5 /* ListViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43222763BA3005783D5 /* ListViewInput.swift */; };
+		7808F43522763BB5005783D5 /* ListViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43422763BB5005783D5 /* ListViewOutput.swift */; };
+		7808F43722763BE9005783D5 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43622763BE9005783D5 /* ListInteractor.swift */; };
+		7808F43922763C03005783D5 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43822763C03005783D5 /* ListViewController.swift */; };
+		7808F43B22763C0E005783D5 /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F43A22763C0E005783D5 /* ListViewController.storyboard */; };
+		7808F43D22763DED005783D5 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43C22763DED005783D5 /* ObjectCell.swift */; };
+		7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +72,13 @@
 		7808F4282275F8A2005783D5 /* MKMapView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Additions.swift"; sourceTree = "<group>"; };
 		7808F42A2276229A005783D5 /* NSData+Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Cache.swift"; sourceTree = "<group>"; };
 		7808F42C227626F3005783D5 /* URL+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Additions.swift"; sourceTree = "<group>"; };
+		7808F43222763BA3005783D5 /* ListViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewInput.swift; sourceTree = "<group>"; };
+		7808F43422763BB5005783D5 /* ListViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewOutput.swift; sourceTree = "<group>"; };
+		7808F43622763BE9005783D5 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		7808F43822763C03005783D5 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		7808F43A22763C0E005783D5 /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
+		7808F43C22763DED005783D5 /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
+		7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoObjectPresentable.swift; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -167,6 +181,7 @@
 			children = (
 				7808F40822745EE1005783D5 /* Common */,
 				7808F3FA22745DA7005783D5 /* Map */,
+				7808F42E22763B6D005783D5 /* List */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -268,6 +283,52 @@
 			path = DataProvider;
 			sourceTree = "<group>";
 		};
+		7808F42E22763B6D005783D5 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				7808F43E22763E4A005783D5 /* Models */,
+				7808F42F22763B78005783D5 /* Protocol */,
+				7808F43022763B7D005783D5 /* Interactor */,
+				7808F43122763B88005783D5 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		7808F42F22763B78005783D5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				7808F43222763BA3005783D5 /* ListViewInput.swift */,
+				7808F43422763BB5005783D5 /* ListViewOutput.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		7808F43022763B7D005783D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				7808F43622763BE9005783D5 /* ListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		7808F43122763B88005783D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7808F43C22763DED005783D5 /* ObjectCell.swift */,
+				7808F43822763C03005783D5 /* ListViewController.swift */,
+				7808F43A22763C0E005783D5 /* ListViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7808F43E22763E4A005783D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +393,7 @@
 				7808F3E8227454C5005783D5 /* LaunchScreen.storyboard in Resources */,
 				7808F3E5227454C5005783D5 /* Assets.xcassets in Resources */,
 				7808F40D22745FF3005783D5 /* MapViewController.storyboard in Resources */,
+				7808F43B22763C0E005783D5 /* ListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,9 +476,12 @@
 				7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */,
 				7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */,
 				7808F40022745E21005783D5 /* MapViewInput.swift in Sources */,
+				7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */,
 				7808F40522745E6A005783D5 /* MapInteractor.swift in Sources */,
+				7808F43722763BE9005783D5 /* ListInteractor.swift in Sources */,
 				7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */,
 				7808F41122746229005783D5 /* Storyboard+Init.swift in Sources */,
+				7808F43D22763DED005783D5 /* ObjectCell.swift in Sources */,
 				7808F4292275F8A2005783D5 /* MKMapView+Additions.swift in Sources */,
 				7808F4272275F312005783D5 /* MKPolygonRenderer+Additions.swift in Sources */,
 				7808F3DE227454C4005783D5 /* AppDelegate.swift in Sources */,
@@ -425,12 +490,15 @@
 				7808F41922748DF5005783D5 /* URLSession+Result.swift in Sources */,
 				7808F4212275DDDF005783D5 /* ProperClusterManager.swift in Sources */,
 				7808F40722745E76005783D5 /* MapViewController.swift in Sources */,
+				7808F43522763BB5005783D5 /* ListViewOutput.swift in Sources */,
 				7808F42D227626F3005783D5 /* URL+Additions.swift in Sources */,
+				7808F43322763BA3005783D5 /* ListViewInput.swift in Sources */,
 				7808F40B22745F00005783D5 /* ViewOutput.swift in Sources */,
 				7808F414227487C5005783D5 /* NetworkingTransport.swift in Sources */,
 				7808F4252275E221005783D5 /* PolylineRenderer+Additions.swift in Sources */,
 				7808F41F2275DD80005783D5 /* MKMapView+Annotation.swift in Sources */,
 				7808F417227488A8005783D5 /* MapObjectsLoadingService.swift in Sources */,
+				7808F43922763C03005783D5 /* ListViewController.swift in Sources */,
 				7808F4232275DF03005783D5 /* UIColor+Additions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

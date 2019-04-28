@@ -16,7 +16,6 @@ class MapViewController: UIViewController, StoryboardBased {
     var output: MapViewOutput!
 
     @IBOutlet private weak var mapView: MKMapView!
-    var locationManager = CLLocationManager()
 
     lazy var manager: ProperClusterManager = {
         let manager = ProperClusterManager()
@@ -29,8 +28,6 @@ class MapViewController: UIViewController, StoryboardBased {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        locationManager.requestWhenInUseAuthorization()
         output.onViewReady()
     }
 }
@@ -51,6 +48,10 @@ private extension MapViewController {
         manager.remove(annotation)
         manager.reload(mapView: mapView)
     }
+
+    func removeAllAnnotatoins() {
+        manager.removeAll()
+    }
 }
 
 extension MapViewController: MapViewInput {
@@ -65,6 +66,8 @@ extension MapViewController: MapViewInput {
     }
 
     func display(_ objects: Features) {
+        removeAllAnnotatoins()
+
         func apply(_ shape: MKShape) {
             if let polygon = shape as? MKPolygon {
                 add(polygon)

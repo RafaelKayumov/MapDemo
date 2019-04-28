@@ -11,21 +11,21 @@ import GEOSwift
 private let kParkingsDataFileName = "parkingsData.json"
 private let kRechargeStationsFileName = "rechargeStationsData.json"
 
-class MapObjectsDataProvider {
+enum ObjectType {
+    case rechargingStation
+    case parking
 
-    enum ObjectType {
-        case rechargingStation
-        case parking
-
-        var dataFileName: String {
-            switch self {
-            case .rechargingStation:
-                return kRechargeStationsFileName
-            case .parking:
-                return kParkingsDataFileName
-            }
+    var dataFileName: String {
+        switch self {
+        case .rechargingStation:
+            return kRechargeStationsFileName
+        case .parking:
+            return kParkingsDataFileName
         }
     }
+}
+
+class MapObjectsDataProvider {
 
     private var paidParkingAreasService: MapObjectsLoadingService
     private var paidParkingsService: MapObjectsLoadingService
@@ -34,6 +34,7 @@ class MapObjectsDataProvider {
 
     private(set) var parkings = Features()
     private(set) var rechargingStations = Features()
+    private(set) var boundingRectObjects = Features()
     var allObjects: Features {
         return parkings + rechargingStations
     }
@@ -107,5 +108,9 @@ class MapObjectsDataProvider {
         return allObjects.filter {
             $0.geometries?.first?.intersects(rectPolygon) ?? false
         }
+    }
+
+    func bakeBoundingRectObjects() {
+        boundingRectObjects = objectsInBoundingRect()
     }
 }
