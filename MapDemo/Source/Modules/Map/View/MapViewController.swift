@@ -16,6 +16,8 @@ class MapViewController: UIViewController, StoryboardBased {
     var output: MapViewOutput!
 
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var rechargingStationsSwitch: UISwitch!
+    @IBOutlet private weak var parkingsSwitch: UISwitch!
 
     lazy var manager: ProperClusterManager = {
         let manager = ProperClusterManager()
@@ -29,6 +31,17 @@ class MapViewController: UIViewController, StoryboardBased {
     override func viewDidLoad() {
         super.viewDidLoad()
         output.onViewReady()
+    }
+}
+
+private extension MapViewController {
+
+    @IBAction func onRechargingStationsSwitch() {
+        output.onFilterChange(.rechargingStations, state: rechargingStationsSwitch.isOn)
+    }
+
+    @IBAction func onParkingsSwitch() {
+        output.onFilterChange(.parkings, state: parkingsSwitch.isOn)
     }
 }
 
@@ -66,37 +79,27 @@ extension MapViewController: MapViewInput {
     }
 
     func display(_ objects: Features) {
-        removeAllAnnotatoins()
+        let backgroundQueue = DispatchQueue.global(qos: .userInitiated)
+        let mainQueue = DispatchQueue.main
 
-        func apply(_ shape: MKShape) {
-            if let polygon = shape as? MKPolygon {
-                add(polygon)
-            } else if let polyline = shape as? MKPolyline {
-                add(polyline)
+        backgroundQueue.async {
+            let mapShapes = objects.compactMap { $0.geometries?.first?.mapShape() }
+            let shapesCollection = mapShapes.compactMap { $0 as? MKShapesCollection }
+            let overlays = mapShapes.compactMap { !($0 is MKShapesCollection) ? $0 : nil }
+            let shapesToAdd = shapesCollection.flatMap { shapesCollection in
+                shapesCollection.shapes
+            }
+            mainQueue.async {
+                self.removeAllAnnotatoins()
+                self.add(shapesToAdd)
+                self.add(overlays)
             }
         }
+    }
 
-        let shapesCollection = objects.compactMap {
-            $0.geometries?.first?.mapShape() as? MKShapesCollection
-        }
-        shapesCollection.forEach {
-            $0.shapes.forEach { shape in
-                apply(shape)
-            }
-        }
-
-        let overlays = objects.compactMap {
-            $0.geometries?.first?.mapShape()
-        }
-        overlays.forEach {
-            apply($0)
-        }
-
-        let annotations = objects.compactMap {
-            $0.geometries?.first?.mapShape() as? MKPointAnnotation
-        }
-
-        add(annotations)
+    func display(_ filter: FilterOptions) {
+        parkingsSwitch.setOn(filter.contains(.parkings), animated: true)
+        rechargingStationsSwitch.setOn(filter.contains(.rechargingStations), animated: true)
     }
 }
 

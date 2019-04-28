@@ -46,6 +46,7 @@ extension MapInteractor: MapViewOutput {
 
     func onViewReady() {
         locationManager.requestWhenInUseAuthorization()
+        view.display(dataProvider.filterOptions)
         dataProvider.fetchLocalData { features in
             DispatchQueue.main.async {
                 self.view.display(features)
@@ -70,5 +71,15 @@ extension MapInteractor: MapViewOutput {
         mapBoundingRect.topLeft = topLeft
         mapBoundingRect.bottomRight = bottomRight
         dataProvider.mapBoundingRect = mapBoundingRect
+    }
+
+    func onFilterChange(_ option: FilterOptions, state: Bool) {
+        if state {
+            dataProvider.filterOptions.insert(option)
+        } else {
+            dataProvider.filterOptions.remove(option)
+        }
+
+        self.view.display(dataProvider.allObjects)
     }
 }

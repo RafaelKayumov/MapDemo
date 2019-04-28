@@ -40,6 +40,7 @@
 		7808F43B22763C0E005783D5 /* ListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7808F43A22763C0E005783D5 /* ListViewController.storyboard */; };
 		7808F43D22763DED005783D5 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43C22763DED005783D5 /* ObjectCell.swift */; };
 		7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */; };
+		7808F4432276567A005783D5 /* FilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4422276567A005783D5 /* FilterOptions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		7808F43A22763C0E005783D5 /* ListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListViewController.storyboard; sourceTree = "<group>"; };
 		7808F43C22763DED005783D5 /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
 		7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoObjectPresentable.swift; sourceTree = "<group>"; };
+		7808F4422276567A005783D5 /* FilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptions.swift; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 		7808F3FA22745DA7005783D5 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				7808F4412276566A005783D5 /* Models */,
 				7808F3FC22745DCC005783D5 /* Protocol */,
 				7808F3FE22745E03005783D5 /* Interactor */,
 				7808F3FD22745DD4005783D5 /* View */,
@@ -325,6 +328,14 @@
 			isa = PBXGroup;
 			children = (
 				7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7808F4412276566A005783D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7808F4422276567A005783D5 /* FilterOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,6 +485,7 @@
 			files = (
 				7808F41D2275DABB005783D5 /* CountClusterAnnotationView.swift in Sources */,
 				7808F3F722745AB0005783D5 /* AppAssembly.swift in Sources */,
+				7808F4432276567A005783D5 /* FilterOptions.swift in Sources */,
 				7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */,
 				7808F40022745E21005783D5 /* MapViewInput.swift in Sources */,
 				7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */,

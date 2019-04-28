@@ -32,11 +32,20 @@ class MapObjectsDataProvider {
     private var rechargingStationsService: MapObjectsLoadingService
     var mapBoundingRect = BoundingRect.zero
 
+    var filterOptions: FilterOptions = [.rechargingStations, .parkings]
     private(set) var parkings = Features()
     private(set) var rechargingStations = Features()
     private(set) var boundingRectObjects = Features()
+
     var allObjects: Features {
-        return parkings + rechargingStations
+        var result = Features()
+        if filterOptions.contains(.parkings) {
+            result += parkings
+        }
+        if filterOptions.contains(.rechargingStations) {
+            result += rechargingStations
+        }
+        return result
     }
 
     init(paidParkingAreasService: MapObjectsLoadingService,
