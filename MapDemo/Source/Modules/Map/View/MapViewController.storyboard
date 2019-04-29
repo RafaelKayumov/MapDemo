@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-yX-Lic">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsCompass="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMh-yX-Lic">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="aYW-u5-Ih0" id="lnZ-zC-Q9m"/>
@@ -89,6 +89,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="600"/>
                     <connections>
+                        <outlet property="filterPanel" destination="XnV-OE-Zas" id="rBb-wU-aXR"/>
                         <outlet property="mapView" destination="bMh-yX-Lic" id="pUp-Uw-rqG"/>
                         <outlet property="parkingsSwitch" destination="JgV-bh-7IQ" id="541-js-2ka"/>
                         <outlet property="rechargingStationsSwitch" destination="qWm-9K-xTV" id="xCe-PJ-XGa"/>

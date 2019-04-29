@@ -14,6 +14,8 @@ protocol MapViewInput: class {
 
     func display(_ objects: Features)
     func centerOnUser()
+    func centerOnObject(_ object: Feature, squareSizeMeters: CLLocationDistance)
     func applyZoom(_ squareSizeMeters: CLLocationDistance)
     func display(_ filter: FilterOptions)
+    func setFilterPanel(displayed: Bool)
 }

@@ -41,6 +41,7 @@
 		7808F43D22763DED005783D5 /* ObjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43C22763DED005783D5 /* ObjectCell.swift */; };
 		7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */; };
 		7808F4432276567A005783D5 /* FilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4422276567A005783D5 /* FilterOptions.swift */; };
+		7808F4452276F76C005783D5 /* SingleObjectMapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7808F4442276F76C005783D5 /* SingleObjectMapInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		7808F43C22763DED005783D5 /* ObjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCell.swift; sourceTree = "<group>"; };
 		7808F43F22763E67005783D5 /* GeoObjectPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoObjectPresentable.swift; sourceTree = "<group>"; };
 		7808F4422276567A005783D5 /* FilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptions.swift; sourceTree = "<group>"; };
+		7808F4442276F76C005783D5 /* SingleObjectMapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleObjectMapInteractor.swift; sourceTree = "<group>"; };
 		BC51079ABECC74092EFAD652 /* Pods_MapDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -226,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				7808F40422745E6A005783D5 /* MapInteractor.swift */,
+				7808F4442276F76C005783D5 /* SingleObjectMapInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				7808F3F522745A5B005783D5 /* AppCoordinator.swift in Sources */,
 				7808F40022745E21005783D5 /* MapViewInput.swift in Sources */,
 				7808F44022763E67005783D5 /* GeoObjectPresentable.swift in Sources */,
+				7808F4452276F76C005783D5 /* SingleObjectMapInteractor.swift in Sources */,
 				7808F40522745E6A005783D5 /* MapInteractor.swift in Sources */,
 				7808F43722763BE9005783D5 /* ListInteractor.swift in Sources */,
 				7808F40222745E2B005783D5 /* MapViewOutput.swift in Sources */,

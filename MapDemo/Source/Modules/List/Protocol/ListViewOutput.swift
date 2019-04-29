@@ -14,4 +14,5 @@ protocol ListViewOutput: ViewOutput {
     func onWillAppear()
     func triggerObjectsRefresh()
     func objectFor(_ index: Int) -> Feature?
+    func onObjectSelectFor(_ index: Int)
 }

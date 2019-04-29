@@ -47,6 +47,7 @@ extension MapInteractor: MapViewOutput {
     func onViewReady() {
         locationManager.requestWhenInUseAuthorization()
         view.display(dataProvider.filterOptions)
+        view.setFilterPanel(displayed: true)
         dataProvider.fetchLocalData { features in
             DispatchQueue.main.async {
                 self.view.display(features)
@@ -58,7 +59,7 @@ extension MapInteractor: MapViewOutput {
         guard !mapCentered else { return }
         mapCentered = true
         view.centerOnUser()
-        view.applyZoom(kZoomRegionSizeMeters)
+        self.view.applyZoom(kZoomRegionSizeMeters)
 
         dataProvider.loadData { features in
             DispatchQueue.main.async {

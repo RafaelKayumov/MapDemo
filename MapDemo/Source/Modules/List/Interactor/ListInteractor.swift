@@ -13,10 +13,12 @@ class ListInteractor {
 
     private unowned var dataProvider: MapObjectsDataProvider
     private unowned var view: ListViewController
+    private unowned var coordinator: AppCoordinator
 
-    init(dataProvider: MapObjectsDataProvider, view: ListViewController) {
+    init(dataProvider: MapObjectsDataProvider, view: ListViewController, coordinator: AppCoordinator) {
         self.dataProvider = dataProvider
         self.view = view
+        self.coordinator = coordinator
     }
 }
 
@@ -39,5 +41,12 @@ extension ListInteractor: ListViewOutput {
         let boundingRectObjects = dataProvider.boundingRectObjects
         guard boundingRectObjects.indices.contains(index) else { return nil }
         return boundingRectObjects[index]
+    }
+
+    func onObjectSelectFor(_ index: Int) {
+        let objects = dataProvider.boundingRectObjects
+        guard objects.indices.contains(index) else { return }
+        let object = objects[index]
+        coordinator.pushMapForSingleObject(object)
     }
 }

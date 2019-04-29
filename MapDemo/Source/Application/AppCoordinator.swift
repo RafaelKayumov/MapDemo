@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GEOSwift
 
 class AppCoordinator {
 
@@ -17,6 +18,7 @@ class AppCoordinator {
 
     init(assembly: AppAssembly) {
         self.assembly = assembly
+        assembly.coordinator = self
     }
 
     func setupUI() {
@@ -33,11 +35,20 @@ class AppCoordinator {
         self.tabbarController = tabbarController
         self.window = window
     }
+
+    func pushMapForSingleObject(_ object: Feature) {
+        let viewController = prepareMapForSingleObject(object)
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension AppCoordinator {
 
     func prepareRootTabbarController() -> UITabBarController {
         return assembly.instantiateRootTabbarController()
+    }
+
+    func prepareMapForSingleObject(_ object: Feature) -> UIViewController {
+        return assembly.instantiateMapForSingleObjectAndReturnView(object)
     }
 }

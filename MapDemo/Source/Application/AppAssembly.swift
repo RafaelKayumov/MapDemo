@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import GEOSwift
 
 class AppAssembly {
 
+    unowned var coordinator: AppCoordinator!
     private weak var mapModule: MapInteractor?
     private weak var listModule: ListInteractor?
     lazy private var dataProvider: MapObjectsDataProvider = {
@@ -45,6 +47,11 @@ class AppAssembly {
 
         return tabbarController
     }
+
+    func instantiateMapForSingleObjectAndReturnView(_ object: Feature) -> UIViewController {
+        let mapEntities = assembleMap(singleObject: object)
+        return mapEntities.view
+    }
 }
 
 private extension AppAssembly {
@@ -59,7 +66,16 @@ private extension AppAssembly {
 
     func assembleList(dataProvider: MapObjectsDataProvider) -> (module: ListInteractor, view: ListViewController) {
         let view = ListViewController.instantiate()
-        let module = ListInteractor(dataProvider: dataProvider, view: view)
+        let module = ListInteractor(dataProvider: dataProvider, view: view, coordinator: coordinator)
+        view.output = module
+
+        return (module, view)
+    }
+
+    func assembleMap(singleObject: Feature) -> (module: SingleObjectMapInteractor, view: MapViewController) {
+        let view = MapViewController.instantiate()
+        view.title = singleObject.presentable().name
+        let module = SingleObjectMapInteractor(object: singleObject, view: view)
         view.output = module
 
         return (module, view)

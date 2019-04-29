@@ -16,6 +16,7 @@ class MapViewController: UIViewController, StoryboardBased {
     var output: MapViewOutput!
 
     @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var filterPanel: UIView!
     @IBOutlet private weak var rechargingStationsSwitch: UISwitch!
     @IBOutlet private weak var parkingsSwitch: UISwitch!
 
@@ -100,6 +101,23 @@ extension MapViewController: MapViewInput {
     func display(_ filter: FilterOptions) {
         parkingsSwitch.setOn(filter.contains(.parkings), animated: true)
         rechargingStationsSwitch.setOn(filter.contains(.rechargingStations), animated: true)
+    }
+
+    func setFilterPanel(displayed: Bool) {
+        filterPanel.isHidden = !displayed
+    }
+
+    func centerOnObject(_ object: Feature, squareSizeMeters: CLLocationDistance) {
+        guard let shape = object.geometries?.first?.mapShape() else { return }
+        var coordinate: CLLocationCoordinate2D?
+        if let collection = shape as? MKShapesCollection {
+            coordinate = collection.shapes.first?.coordinate
+        } else {
+            coordinate = shape.coordinate
+        }
+
+        guard let coordinateValid = coordinate else { return }
+        mapView.region = MKCoordinateRegion(center: coordinateValid, latitudinalMeters: squareSizeMeters, longitudinalMeters: squareSizeMeters)
     }
 }
 
